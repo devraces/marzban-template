@@ -223,20 +223,20 @@
     <img alt="Avatar Image" class="profile-card__avatar"
       src="https://images.weserv.nl/?url=https://raw.githubusercontent.com/Gozargah/Marzban-docs/master/screenshots/logo-dark.png?v=4&h=300&w=300&fit=cover&maxage=7d&bg=000" />
     <div class="profile-card__bio">
-      <h1 class="profile-card__bio-name"> نام کاربری: {{ user.username }}</h1>
-      <h1 class="profile-card__bio-name"> {% if user.status.value == 'active' %}فعال{% elif user.status.value ==
-        'limited' %}محدود شده{% elif user.status.value == 'expired' %}منقضی شده{% elif user.status.value == 'disabled'
-        %}غیرفعال{% endif %} </h1>
-      <h2 class="profile-card__bio-title"> حجم مصرف شده: {{ user.used_traffic | bytesformat }}</h2>
+      <h1 class="profile-card__bio-name"> Имя: {{ user.username }}</h1>
+      <h1 class="profile-card__bio-name"> {% if user.status.value == 'active' %}Активный{% elif user.status.value ==
+        'limited' %}Ограниченный{% elif user.status.value == 'expired' %}Истёк{% elif user.status.value == 'disabled'
+        %}Неактивен{% endif %} </h1>
+      <h2 class="profile-card__bio-title"> Траффик: {{ user.used_traffic | bytesformat }}</h2>
       {% if user.data_limit_reset_strategy != 'no_reset' %}
       <h2 class="profile-card__bio-title" style="direction: ltr;">
         (resets every {{ user.data_limit_reset_strategy.value }})
       </h2>
       {% endif %}
-      <h2 class="profile-card__bio-title"> حجم کل: {% if not user.data_limit %}∞{% else %}{{ user.data_limit |
+      <h2 class="profile-card__bio-title"> Лимит: {% if not user.data_limit %}∞{% else %}{{ user.data_limit |
         bytesformat }}{% endif %}
       </h2>
-      <h2 class="profile-card__bio-title"> مدت زمان باقیمانده:
+      <h2 class="profile-card__bio-title"> Дата конца света:
         {% if not user.expire %}
         ∞
         {% else %}
@@ -246,9 +246,9 @@
             {% set remaining_hours = (remaining_seconds % (24 * 3600)) // 3600 %}
             {% set remaining_minutes = (remaining_seconds % 3600) // 60 %}
             {% if remaining_days >= 1 %}
-                {{ remaining_days | int }} روز {{ remaining_hours | int }} ساعت
+                {{ remaining_days | int }} день {{ remaining_hours | int }} час
             {% else %}
-                {{ remaining_hours | int }} ساعت {{ remaining_minutes | int }} دقیقه
+                {{ remaining_hours | int }} часа {{ remaining_minutes | int }} минут
             {% endif %}
         {% endif %}
       </h2>
@@ -266,24 +266,24 @@
       <div class="accordion">
         <input type="checkbox" name="quick-add" id="quick-add">
         <label class="profile-card__header" for="quick-add">
-          افزودن سریع لینک سابسکریپشن
+          Подписка
         </label>
         <div class="accordion-content">
           <a class="profile-card__links-button" href="sing-box://import-remote-profile?url={{ user.subscription_url | urlencode }}#{{ user.username | urlencode }}"
-            rel="noopener noreferrer" target="_blank">اضافه کردن به sing-box</a>
+            rel="noopener noreferrer" target="_blank"> Подписка sing-box</a>
           <a class="profile-card__links-button" href="v2rayng://install-config?url={{ user.subscription_url }}"
-            rel="noopener noreferrer" target="_blank">اضافه کردن به v2rayNG</a>
+            rel="noopener noreferrer" target="_blank"> Подписка v2rayNG</a>
           <a class="profile-card__links-button" href="sn://subscription?url={{ user.subscription_url }}&name={{ user.username }}"
-            rel="noopener noreferrer" target="_blank">اضافه کردن به NekoBox</a>
+            rel="noopener noreferrer" target="_blank"> Подписка NekoBox</a>
           <a class="profile-card__links-button" href="streisand://import/{{ user.subscription_url }}"
-            rel="noopener noreferrer" target="_blank">اضافه کردن به Streisand</a>
+            rel="noopener noreferrer" target="_blank"> Подписка Streisand</a>
         </div>
       </div>
       <div class="profile-card__separator"></div>
       <div class="accordion">
         <input type="checkbox" name="android" id="android">
         <label class="profile-card__header" for="android">
-          برنامه مورد نیاز برای اندروید
+          Приложения
         </label>
         <div class="accordion-content">
           <a class="profile-card__links-button"
@@ -306,7 +306,7 @@
       <div class="accordion">
         <input type="checkbox" name="ios" id="ios">
         <label class="profile-card__header" for="ios">
-          برنامه مورد نیاز برای iOS
+          Использование на iOS
         </label>
         <div class="accordion-content">
           <a class="profile-card__links-button" href="https://apps.apple.com/us/app/sing-box/id6451272673"
@@ -321,7 +321,7 @@
       <div class="accordion">
         <input type="checkbox" name="windows" id="windows">
         <label class="profile-card__header" for="windows">
-          برنامه مورد نیاز برای ویندوز
+          Windows
         </label>
         <div class="accordion-content">
           <a class="profile-card__links-button"
